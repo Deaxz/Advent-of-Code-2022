@@ -25,14 +25,14 @@ strategy ("B":_:xss) = 6 + strategy xss
 strategy ("C":"X":xss) = 6 + strategy xss
 strategy ("C":"Y":xss) = 0 + strategy xss
 strategy ("C":_:xss) = 3 + strategy xss
-strategy _ = 0 -- unnecessary case
+strategy _ = undefined -- unnecessary case
 
 bonusScore :: [String] -> Int
 bonusScore [] = 0
 bonusScore (opp:"X":xss) = 1 + bonusScore xss
 bonusScore (opp:"Y":xss) = 2 + bonusScore xss
 bonusScore (opp:"Z":xss) = 3 + bonusScore xss
-bonusScore _ = 0 -- unnecessary case
+bonusScore _ = undefined -- unnecessary case
 
 
 -- 2. forsøg
@@ -44,7 +44,7 @@ strategy' (i:j:xs) = decide i j + strategy' xs
                           | max x y == x && x-y > 1 = 6 + y
                           | x < y = 6 + y
                           | otherwise = 0 + y
-strategy' _ = 0 -- unnecessary case
+strategy' _ = undefined -- unnecessary case
 
 tonum :: String -> Int
 tonum "A" = 1
@@ -53,13 +53,13 @@ tonum "C" = 3
 tonum "X" = 1
 tonum "Y" = 2
 tonum "Z" = 3
-tonum _ = 0 -- unnecessary case
+tonum _ = undefined -- unnecessary case
 
 -- 3. forsøg
 highStrategy :: (Int -> Int -> Int) -> [Int] -> Int
 highStrategy _ [] = 0
 highStrategy f (x:y:xs) = f x y + highStrategy f xs
-highStrategy _ _ = 0 -- unnecessary case
+highStrategy _ _ = undefined -- unnecessary case
 
 simplestrat :: Int -> Int -> Int 
 simplestrat 1 3 = 0 + 3
@@ -72,7 +72,7 @@ simplestrat x y | x == y = 3 + y
 highStrategy' :: (String -> String -> Int) -> [String] -> Int
 highStrategy' _ [] = 0
 highStrategy' f (x:y:xs) = f x y + highStrategy' f xs
-highStrategy' _ _ = 0 -- unnecessary case
+highStrategy' _ _ = undefined -- unnecessary case
 
 simplestrat' :: String -> String -> Int
 simplestrat' "A" "Z" = 0 + 3
@@ -102,7 +102,7 @@ perfectstrat x 2 = x + 3
 perfectstrat 1 3 = 2 + 6
 perfectstrat 2 3 = 3 + 6
 perfectstrat 3 3 = 1 + 6
-perfectstrat _ _ = 0 -- unnecessary case
+perfectstrat _ _ = undefined -- unnecessary case
 
 -- 2. forsøg
 perfectstrat' :: String -> String -> Int
@@ -111,4 +111,4 @@ perfectstrat' x "X" | tonum x == 1 = 3
 perfectstrat' x "Y" = tonum x + 3 
 perfectstrat' x "Z" | tonum x == 3 = 1 + 6 
                     | otherwise = tonum x + 1 + 6
-perfectstrat' _ _ = 0 -- unnecessary case
+perfectstrat' _ _ = undefined -- unnecessary case

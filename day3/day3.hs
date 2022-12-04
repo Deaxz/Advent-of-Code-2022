@@ -19,7 +19,7 @@ commonelement :: String -> String -> Int
 commonelement (x:xs) ys = case find (==x) ys of
                            Just c -> topriority c
                            Nothing -> commonelement xs ys
-commonelement _ _ = 0 -- unneccesary case
+commonelement _ _ = undefined -- unneccesary case
 
 topriority :: Char -> Int
 topriority x = case l of 
@@ -42,7 +42,7 @@ priority' = do
 calcpriority' :: [String] -> Int
 calcpriority' [] = 0
 calcpriority' (xs:ys:zs:xss) = commonelement' xs ys zs + calcpriority' xss
-calcpriority' _ = 0 -- unneccesary case
+calcpriority' _ = undefined -- unneccesary case
 
 commonelement' :: String -> String -> String -> Int
 commonelement' (x:xs) ys zs = case find (==x) ys of
@@ -50,4 +50,4 @@ commonelement' (x:xs) ys zs = case find (==x) ys of
                                           Just j -> topriority i
                                           Nothing -> commonelement' xs ys zs
                                Nothing -> commonelement' xs ys zs
-commonelement' _ _ _ = 0 -- unneccesary case
+commonelement' _ _ _ = undefined -- unneccesary case
