@@ -94,7 +94,6 @@ calculatescore' = do
 
 -- 1. forsøg
 perfectstrat :: Int -> Int -> Int
--- lose
 perfectstrat 1 1 = 3 + 0
 perfectstrat 2 1 = 1 + 0
 perfectstrat 3 1 = 2 + 0
